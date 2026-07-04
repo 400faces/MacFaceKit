@@ -2,8 +2,8 @@
 import PackageDescription
 
 let package = Package(
-    name: "FacesKit",
+    name: "MacFaceKit",
     platforms: [.macOS(.v14)],
-    products: [.library(name: "FacesKit", targets: ["FacesKit"])],
-    targets: [.target(name: "FacesKit")]
+    products: [.library(name: "MacFaceKit", targets: ["MacFaceKit"])],
+    targets: [.target(name: "MacFaceKit")]
 )

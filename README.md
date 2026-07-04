@@ -1,4 +1,4 @@
-# FacesKit
+# MacFaceKit
 
 Shared SwiftUI components for ECN macOS apps (RememBar, TermTile, …). Write once, import everywhere —
 so every app's dropdowns, links, and sign-off render identically and cost nothing to reuse.
@@ -14,9 +14,9 @@ System-adaptive colors (no fixed palette); neutral spacing tokens in `UI`.
 ## Use
 Add as a dependency (local path for now; a git URL once hosted):
 ```swift
-.package(path: "../FacesKit")   // or .package(url: "https://github.com/400faces/FacesKit", from: "0.1.0")
+.package(path: "../MacFaceKit")   // or .package(url: "https://github.com/400faces/MacFaceKit", from: "0.1.0")
 ```
-Then `import FacesKit`.
+Then `import MacFaceKit`.
 
 ## Status
 v0 — extracted from RememBar (the mature source). Not yet wired into an app or pushed to a remote;
