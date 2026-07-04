@@ -1,23 +1,31 @@
 # MacFaceKit
 
-Shared SwiftUI components for ECN macOS apps (RememBar, TermTile, …). Write once, import everywhere —
-so every app's dropdowns, links, and sign-off render identically and cost nothing to reuse.
+The shared SwiftUI design system for 400faces macOS apps (RememBar, TermTile, …). One canonical token
+set + componentized UI, so every app renders with the same brand and the apps feel like UI-twins — only
+their general-purpose functionality differs.
 
-System-adaptive colors (no fixed palette); neutral spacing tokens in `UI`.
+**Fixed-dark brand palette** (not system-adaptive) — the apps share one look rather than each adapting
+differently. Lean by design: extend only as a real need appears.
+
+## Tokens (`Tokens`)
+One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, `controlButton`),
+**color** (panel/field/row/rowActive/line/lineStrong/text/muted/quiet/warning/accent), and
+**typography** (`title`/`body`/`caption`/`label`). Nothing in the kit hardcodes a raw value.
 
 ## Components
-- `ActionRow` — icon + title menu/action row; hover highlight; destructive = red-fill/white on hover.
-- `ExternalLink` — label + ↗, hover underline + link cursor (opens outside the app).
+- `ActionRow` — icon + title action row; hover highlight; destructive = red-fill/white on hover.
+- `ExternalLink` — label + ↗, hover underline (opens outside the app).
 - `MadeWithSignoff` / `RobotGlyph` — the "Made with ♥ & 🤖" sign-off.
-- `UI` — spacing/radius tokens.
+- `IconButtonStyle` — square icon-control button style (brightens on hover/active/press).
+- `HoverIconButton` — self-contained borderless icon button.
+- `ActionPillButton` — short tinted call-to-action pill.
+
+Grow as needed: fields/chips, loading skeletons, the Sparkle update flow, and the settings-window shell
+are next tiers (see `DESIGN.md`).
 
 ## Use
-Add as a dependency (local path for now; a git URL once hosted):
 ```swift
-.package(path: "../MacFaceKit")   // or .package(url: "https://github.com/400faces/MacFaceKit", from: "0.1.0")
+.package(url: "https://github.com/400faces/MacFaceKit", from: "0.1.0")  // once tagged
+.package(path: "../MacFaceKit")                                          // local, fast iteration
 ```
 Then `import MacFaceKit`.
-
-## Status
-v0 — extracted from RememBar (the mature source). Not yet wired into an app or pushed to a remote;
-name/hosting TBD.

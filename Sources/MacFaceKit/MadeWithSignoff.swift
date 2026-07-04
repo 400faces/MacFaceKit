@@ -10,10 +10,10 @@ public struct MadeWithSignoff: View {
             Text("Made with")
             Image(systemName: "heart.fill").font(.system(size: 8)).foregroundStyle(.pink)
             Text("&")
-            RobotGlyph(color: .secondary).frame(width: 12, height: 12)
+            RobotGlyph(color: Tokens.muted).frame(width: 12, height: 12)
         }
-        .font(.caption2)
-        .foregroundStyle(.tertiary)
+        .font(Tokens.caption)
+        .foregroundStyle(Tokens.quiet)
     }
 }
 

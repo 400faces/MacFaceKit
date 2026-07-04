@@ -1,10 +1,10 @@
 import SwiftUI
 import AppKit
 
-/// A full-width action row: icon + title with a hover highlight. The destructive variant reads red,
-/// then RED FILL / WHITE TEXT on hover — the macOS delete-item feel — so a dangerous action looks
-/// dangerous. Disabled reads muted, no hover. (Generalized from RememBar's `AboutActionRow`;
-/// system-adaptive colors instead of a fixed palette.)
+/// A full-width action row: icon + title with a hover highlight. Resting = a subtle `row` fill + `line`
+/// border; hover brightens to `rowActive` + `lineStrong`. The destructive variant reads red, then RED
+/// FILL / WHITE TEXT on hover — the macOS delete-item feel — so a dangerous action looks dangerous.
+/// (Verbatim from RememBar's `AboutActionRow`, on the shared `Tokens`.)
 public struct ActionRow: View {
     private let title: String
     private let systemImage: String
@@ -23,28 +23,30 @@ public struct ActionRow: View {
     }
 
     private var foreground: Color {
-        if !enabled { return .secondary }
+        if !enabled { return Tokens.quiet }
         if destructive { return hovered ? .white : .red }
-        return .primary
+        return Tokens.text
     }
     private var fill: Color {
-        guard enabled else { return .clear }
-        if destructive { return hovered ? .red : .clear }
-        return hovered ? Color.primary.opacity(0.09) : .clear
+        if destructive { return hovered ? .red : Tokens.row }
+        return hovered ? Tokens.rowActive : Tokens.row
     }
 
     public var body: some View {
         Button(action: action) {
-            HStack(spacing: UI.space) {
-                Image(systemName: systemImage).font(.system(size: 11, weight: .medium)).frame(width: 16)
+            HStack(spacing: Tokens.micro + 2) {
+                Image(systemName: systemImage).font(.system(size: 11, weight: .medium)).frame(width: 15)
                 Text(title).fontWeight(.medium)
                 Spacer(minLength: 0)
             }
-            .font(.callout)
+            .font(Tokens.caption)
             .foregroundStyle(foreground)
-            .padding(.horizontal, UI.space)
-            .frame(maxWidth: .infinity, minHeight: UI.controlRow)
-            .background(RoundedRectangle(cornerRadius: UI.radius - 1, style: .continuous).fill(fill))
+            .padding(.horizontal, Tokens.space)
+            .frame(maxWidth: .infinity)
+            .frame(height: Tokens.controlButton + 4)
+            .background(RoundedRectangle(cornerRadius: Tokens.radius, style: .continuous).fill(fill))
+            .overlay(RoundedRectangle(cornerRadius: Tokens.radius, style: .continuous)
+                .stroke(hovered && !destructive ? Tokens.lineStrong : Tokens.line, lineWidth: 1))
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
