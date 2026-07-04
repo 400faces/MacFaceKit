@@ -2,8 +2,8 @@
 import PackageDescription
 
 let package = Package(
-    name: "ECNKit",
+    name: "FacesKit",
     platforms: [.macOS(.v14)],
-    products: [.library(name: "ECNKit", targets: ["ECNKit"])],
-    targets: [.target(name: "ECNKit")]
+    products: [.library(name: "FacesKit", targets: ["FacesKit"])],
+    targets: [.target(name: "FacesKit")]
 )

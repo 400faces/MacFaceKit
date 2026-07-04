@@ -17,63 +17,63 @@
 
   ],
   "swiftCommands" : {
-    "C.ECNKit-arm64-apple-macosx15.0-debug.module" : {
+    "C.FacesKit-arm64-apple-macosx15.0-debug.module" : {
       "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
-      "fileList" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/sources",
-      "importPath" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/Modules",
+      "fileList" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/sources",
+      "importPath" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/Modules",
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ActionRow.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ActionRow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ExternalLink.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ExternalLink.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/MadeWithSignoff.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/MadeWithSignoff.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/UI.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/UI.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/sources"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/sources"
         }
       ],
       "isLibrary" : true,
-      "moduleName" : "ECNKit",
-      "moduleOutputPath" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/Modules/ECNKit.swiftmodule",
+      "moduleName" : "FacesKit",
+      "moduleOutputPath" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/Modules/FacesKit.swiftmodule",
       "objects" : [
-        "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/ActionRow.swift.o",
-        "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/ExternalLink.swift.o",
-        "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/MadeWithSignoff.swift.o",
-        "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/UI.swift.o"
+        "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/ActionRow.swift.o",
+        "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/ExternalLink.swift.o",
+        "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/MadeWithSignoff.swift.o",
+        "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/UI.swift.o"
       ],
       "otherArguments" : [
         "-target",
         "arm64-apple-macosx14.0",
         "-enable-batch-mode",
         "-index-store-path",
-        "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/index/store",
+        "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/index/store",
         "-Onone",
         "-enable-testing",
         "-j10",
         "-DSWIFT_PACKAGE",
         "-DDEBUG",
         "-module-cache-path",
-        "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ModuleCache",
+        "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
         "-parse-as-library",
         "-emit-objc-header",
         "-emit-objc-header-path",
-        "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/ECNKit-Swift.h",
+        "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/FacesKit-Swift.h",
         "-swift-version",
         "6",
         "-sdk",
@@ -98,39 +98,39 @@
         "-Xcc",
         "-g",
         "-package-name",
-        "ecnkit"
+        "faceskit"
       ],
-      "outputFileMapPath" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/output-file-map.json",
+      "outputFileMapPath" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/output-file-map.json",
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/ActionRow.swift.o"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/ActionRow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/ExternalLink.swift.o"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/ExternalLink.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/MadeWithSignoff.swift.o"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/MadeWithSignoff.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/UI.swift.o"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/UI.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/Modules/ECNKit.swiftmodule"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/Modules/FacesKit.swiftmodule"
         }
       ],
       "prepareForIndexing" : false,
       "sources" : [
-        "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ActionRow.swift",
-        "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ExternalLink.swift",
-        "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/MadeWithSignoff.swift",
-        "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/UI.swift"
+        "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ActionRow.swift",
+        "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ExternalLink.swift",
+        "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/MadeWithSignoff.swift",
+        "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/UI.swift"
       ],
-      "tempsPath" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build",
+      "tempsPath" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build",
       "wholeModuleOptimization" : false
     }
   },
@@ -138,37 +138,37 @@
 
   },
   "swiftTargetScanArgs" : {
-    "ECNKit" : [
+    "FacesKit" : [
       "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
       "-module-name",
-      "ECNKit",
+      "FacesKit",
       "-package-name",
-      "ecnkit",
+      "faceskit",
       "-incremental",
       "-c",
-      "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ActionRow.swift",
-      "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ExternalLink.swift",
-      "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/MadeWithSignoff.swift",
-      "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/UI.swift",
+      "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ActionRow.swift",
+      "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ExternalLink.swift",
+      "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/MadeWithSignoff.swift",
+      "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/UI.swift",
       "-I",
-      "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/Modules",
+      "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx14.0",
       "-enable-batch-mode",
       "-index-store-path",
-      "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/index/store",
+      "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/index/store",
       "-Onone",
       "-enable-testing",
       "-j10",
       "-DSWIFT_PACKAGE",
       "-DDEBUG",
       "-module-cache-path",
-      "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ModuleCache",
+      "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
       "-parse-as-library",
       "-emit-objc-header",
       "-emit-objc-header-path",
-      "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/ECNKit-Swift.h",
+      "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/FacesKit-Swift.h",
       "-swift-version",
       "6",
       "-sdk",
@@ -193,13 +193,13 @@
       "-Xcc",
       "-g",
       "-package-name",
-      "ecnkit",
+      "faceskit",
       "-driver-use-frontend-path",
       "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
     ]
   },
   "targetDependencyMap" : {
-    "ECNKit" : [
+    "FacesKit" : [
 
     ]
   },
@@ -210,7 +210,7 @@
 
   },
   "writeCommands" : {
-    "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/sources" : {
+    "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/sources" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -219,24 +219,24 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ActionRow.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ActionRow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/ExternalLink.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/ExternalLink.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/MadeWithSignoff.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/MadeWithSignoff.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/evancnavarro/Developer/ECNKit/Sources/ECNKit/UI.swift"
+          "name" : "/Users/evancnavarro/Developer/FacesKit/Sources/FacesKit/UI.swift"
         }
       ],
-      "outputFilePath" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/sources"
+      "outputFilePath" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/FacesKit.build/sources"
     },
-    "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+    "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
       "alwaysOutOfDate" : true,
       "inputs" : [
         {
@@ -248,7 +248,7 @@
           "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
         }
       ],
-      "outputFilePath" : "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+      "outputFilePath" : "/Users/evancnavarro/Developer/FacesKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
     }
   }
 }
