@@ -1,0 +1,4 @@
+module ECNKit {
+    header "/Users/evancnavarro/Developer/ECNKit/.build/arm64-apple-macosx/debug/ECNKit.build/ECNKit-Swift.h"
+    requires objc
+}
