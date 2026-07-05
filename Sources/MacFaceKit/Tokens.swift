@@ -16,9 +16,15 @@ public enum Tokens {
     // MARK: Radius
     public static let radius: CGFloat = 8
 
-    // MARK: Size — shared control heights
+    // MARK: Size — shared control heights + the identity-header icon
     public static let control: CGFloat = 34        // search-bar / settings-box height
     public static let controlButton: CGFloat = 26  // icon + action control height
+    public static let iconHeader: CGFloat = 52     // the app-icon tile in AppHeader
+
+    // MARK: Spacing scale — the composites build their layout from these (nothing hardcodes a raw px)
+    public static let gap: CGFloat = 16            // between major sections (space × 2)
+    public static let inset: CGFloat = 10          // card inner padding
+    public static let pad: CGFloat = 14            // panel padding
 
     // MARK: Color — the fixed-dark brand palette
     public static let panel = Color(red: 0.083, green: 0.087, blue: 0.094)
