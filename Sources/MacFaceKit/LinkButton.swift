@@ -6,15 +6,31 @@ import AppKit
 /// `LearnMoreLink`): the outlined-row treatment is for LINKS, distinct from the plain menu-item rows in
 /// a dropdown. Uses `NSWorkspace.open` (SwiftUI `openURL` no-ops in an inactive `.accessory` app).
 public struct LinkButton: View {
+    /// The leading glyph: an SF Symbol (sized by font) or a brand mark (a resizable template image).
+    public enum Icon { case symbol(String); case image(Image) }
+
     private let label: String
     private let url: URL
-    private let systemImage: String
+    private let icon: Icon
     @State private var hovered = false
 
     public init(_ label: String, url: URL, systemImage: String = "globe") {
+        self.init(label, url: url, icon: .symbol(systemImage))
+    }
+    public init(_ label: String, url: URL, image: Image) {
+        self.init(label, url: url, icon: .image(image))
+    }
+    public init(_ label: String, url: URL, icon: Icon) {
         self.label = label
         self.url = url
-        self.systemImage = systemImage
+        self.icon = icon
+    }
+
+    @ViewBuilder private var iconView: some View {
+        switch icon {
+        case .symbol(let name): Image(systemName: name).font(.system(size: 10, weight: .medium))
+        case .image(let image): image.resizable().scaledToFit().frame(width: 12, height: 12)
+        }
     }
 
     public var body: some View {
@@ -22,7 +38,7 @@ public struct LinkButton: View {
             NSWorkspace.shared.open(url)
         } label: {
             HStack(spacing: Tokens.micro + 1) {
-                Image(systemName: systemImage).font(.system(size: 10, weight: .medium))
+                iconView
                 Text(label).fontWeight(.semibold).underline(hovered, pattern: .solid)
                 Spacer(minLength: 0)
                 Image(systemName: "arrow.up.right").font(.system(size: 9, weight: .semibold))
