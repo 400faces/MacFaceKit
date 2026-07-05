@@ -1,18 +1,21 @@
 import SwiftUI
 import AppKit
 
-/// The running app's icon (a macOS squircle), sized by the caller's `.frame`. Falls back to a rounded
-/// `field` tile with a monogram when no icon is available (e.g. an un-bundled `swift run`). The single
-/// way apps render their identity tile, so the header looks the same everywhere. (From RememBar.)
+/// The app's identity tile (a macOS squircle), sized by the caller's `.frame`. Prefers an explicitly
+/// provided `bundledImage` (an app's own icon resource — the only icon that renders correctly under
+/// `swift run`, where `applicationIconImage` is a generic folder), then the running app's icon, then a
+/// rounded `field` tile with a monogram. The single way apps render their identity tile. (From RememBar.)
 public struct AppIconView: View {
+    private let bundledImage: NSImage?
     private let fallbackMonogram: String
 
-    public init(fallbackMonogram: String = "") {
+    public init(bundledImage: NSImage? = nil, fallbackMonogram: String = "") {
+        self.bundledImage = bundledImage
         self.fallbackMonogram = fallbackMonogram
     }
 
     public var body: some View {
-        if let icon = NSApplication.shared.applicationIconImage {
+        if let icon = bundledImage ?? NSApplication.shared.applicationIconImage {
             Image(nsImage: icon)
                 .resizable()
                 .interpolation(.high)
