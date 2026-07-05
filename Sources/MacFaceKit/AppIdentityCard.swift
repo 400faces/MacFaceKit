@@ -60,6 +60,16 @@ public struct AppIdentityCard<Content: View>: View {
         self.content = content()
     }
 
+    /// Convenience — the common shape both apps use: pass the standard GitHub + License links as URLs and
+    /// they're built here (killing the duplicated `[.github, .license]` array at each call site). `version`
+    /// is typically `appInfo.displayVersion`.
+    public init(name: String, version: String, repoURL: URL, licenseURL: URL, bundledIcon: NSImage? = nil,
+                showsMadeWith: Bool = true, actions: [MenuAction] = [],
+                @ViewBuilder content: () -> Content = { EmptyView() }) {
+        self.init(name: name, version: version, bundledIcon: bundledIcon, showsMadeWith: showsMadeWith,
+                  actions: actions, links: [.github(repoURL), .license(licenseURL)], content: content)
+    }
+
     public var body: some View {
         VStack(alignment: .leading, spacing: Tokens.gap) {
             AppHeader(name: name, version: version, bundledIcon: bundledIcon, showsMadeWith: showsMadeWith) {
