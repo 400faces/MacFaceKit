@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 
 /// The single design-token set for 400faces macOS apps — one source for spacing, radius, size, color,
 /// and typography, so every app (RememBar, TermTile, …) renders with the same brand and the apps feel
@@ -38,4 +39,14 @@ public enum Tokens {
     public static let body = Font.system(size: 13)
     public static let caption = Font.system(size: 12)
     public static let label = Font.system(size: 10, weight: .semibold)
+
+    // MARK: AppKit mirrors — for NSView-based controls (e.g. the hotkey recorder) so they tokenize
+    // against the SAME palette instead of falling back to system control colors.
+    public static let nsPanel = NSColor(srgbRed: 0.083, green: 0.087, blue: 0.094, alpha: 1)
+    public static let nsField = NSColor(srgbRed: 0.059, green: 0.063, blue: 0.071, alpha: 1)
+    public static let nsRow = NSColor(srgbRed: 0.114, green: 0.118, blue: 0.126, alpha: 1)
+    public static let nsLine = NSColor(srgbRed: 0.204, green: 0.212, blue: 0.228, alpha: 1)
+    public static let nsText = NSColor(srgbRed: 0.949, green: 0.953, blue: 0.957, alpha: 1)
+    public static let nsMuted = NSColor(srgbRed: 0.596, green: 0.616, blue: 0.643, alpha: 1)
+    public static let nsAccent = NSColor(srgbRed: 0.039, green: 0.518, blue: 1.0, alpha: 1)
 }

@@ -16,6 +16,7 @@ public struct AppIconView: View {
             Image(nsImage: icon)
                 .resizable()
                 .interpolation(.high)
+                .aspectRatio(1, contentMode: .fit)   // never stretch — the icon stays square (squircle)
         } else {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(Tokens.field)
