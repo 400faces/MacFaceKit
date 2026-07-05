@@ -31,6 +31,8 @@ public enum Tokens {
     public static let muted = Color(red: 0.596, green: 0.616, blue: 0.643)
     public static let quiet = Color(red: 0.451, green: 0.475, blue: 0.506)
     public static let warning = Color(red: 0.941, green: 0.635, blue: 0.271)
+    /// Destructive red (sampled from RememBar's "Remove" row, #e14b3a) — a warm coral, not system red.
+    public static let destructive = Color(red: 0.882, green: 0.294, blue: 0.227)
     /// Primary-action blue (macOS dark-mode system accent) — the confirming button, matching Sparkle.
     public static let accent = Color(red: 0.039, green: 0.518, blue: 1.0)
 

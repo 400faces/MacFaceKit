@@ -24,11 +24,11 @@ public struct ActionRow: View {
 
     private var foreground: Color {
         if !enabled { return Tokens.quiet }
-        if destructive { return hovered ? .white : .red }
+        if destructive { return hovered ? .white : Tokens.destructive }
         return Tokens.text
     }
     private var fill: Color {
-        if destructive { return hovered ? .red : Tokens.row }
+        if destructive { return hovered ? Tokens.destructive : Tokens.row }
         return hovered ? Tokens.rowActive : Tokens.row
     }
 

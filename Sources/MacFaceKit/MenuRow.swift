@@ -24,27 +24,27 @@ public struct MenuRow: View {
 
     private var foreground: Color {
         if !enabled { return Tokens.quiet }
-        if destructive { return hovered ? .white : .red }
+        if destructive { return hovered ? .white : Tokens.destructive }
         return Tokens.text
     }
     private var fill: Color {
         guard enabled else { return .clear }
-        if destructive { return hovered ? .red : .clear }
+        if destructive { return hovered ? Tokens.destructive : .clear }
         return hovered ? Tokens.rowActive : .clear
     }
 
     public var body: some View {
         Button(action: action) {
             HStack(spacing: Tokens.micro + 2) {
-                Image(systemName: systemImage).font(.system(size: 11, weight: .medium)).frame(width: 16)
-                Text(title)
+                Image(systemName: systemImage).font(.system(size: 12, weight: .semibold)).frame(width: 18)
+                Text(title).fontWeight(.semibold)
                 Spacer(minLength: 0)
             }
             .font(Tokens.body)
             .foregroundStyle(foreground)
             .padding(.horizontal, Tokens.micro + 2)
             .frame(maxWidth: .infinity, minHeight: Tokens.controlButton)
-            .background(RoundedRectangle(cornerRadius: Tokens.micro + 1, style: .continuous).fill(fill))
+            .background(RoundedRectangle(cornerRadius: Tokens.radius - 1, style: .continuous).fill(fill))
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
