@@ -42,17 +42,19 @@ public struct IdentityLink: Identifiable {
 public struct AppIdentityCard<Content: View>: View {
     private let name: String
     private let version: String
+    private let subtitle: String?
     private let bundledIcon: NSImage?
     private let showsMadeWith: Bool
     private let actions: [MenuAction]
     private let links: [IdentityLink]
     private let content: Content
 
-    public init(name: String, version: String, bundledIcon: NSImage? = nil, showsMadeWith: Bool = true,
-                actions: [MenuAction] = [], links: [IdentityLink] = [],
+    public init(name: String, version: String, subtitle: String? = nil, bundledIcon: NSImage? = nil,
+                showsMadeWith: Bool = true, actions: [MenuAction] = [], links: [IdentityLink] = [],
                 @ViewBuilder content: () -> Content = { EmptyView() }) {
         self.name = name
         self.version = version
+        self.subtitle = subtitle
         self.bundledIcon = bundledIcon
         self.showsMadeWith = showsMadeWith
         self.actions = actions
@@ -63,17 +65,26 @@ public struct AppIdentityCard<Content: View>: View {
     /// Convenience — the common shape both apps use: pass the standard GitHub + License links as URLs and
     /// they're built here (killing the duplicated `[.github, .license]` array at each call site). `version`
     /// is typically `appInfo.displayVersion`.
-    public init(name: String, version: String, repoURL: URL, licenseURL: URL, bundledIcon: NSImage? = nil,
-                showsMadeWith: Bool = true, actions: [MenuAction] = [],
+    public init(name: String, version: String, repoURL: URL, licenseURL: URL, subtitle: String? = nil,
+                bundledIcon: NSImage? = nil, showsMadeWith: Bool = true, actions: [MenuAction] = [],
                 @ViewBuilder content: () -> Content = { EmptyView() }) {
-        self.init(name: name, version: version, bundledIcon: bundledIcon, showsMadeWith: showsMadeWith,
-                  actions: actions, links: [.github(repoURL), .license(licenseURL)], content: content)
+        self.init(name: name, version: version, subtitle: subtitle, bundledIcon: bundledIcon,
+                  showsMadeWith: showsMadeWith, actions: actions,
+                  links: [.github(repoURL), .license(licenseURL)], content: content)
     }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: Tokens.gap) {
             AppHeader(name: name, version: version, bundledIcon: bundledIcon, showsMadeWith: showsMadeWith) {
                 if !actions.isEmpty { OverflowMenu(actions) }
+            }
+            // Optional one-line description — identity-level info ("what this app is"), so it sits directly
+            // under the header and ABOVE the action links.
+            if let subtitle {
+                Text(subtitle)
+                    .font(Tokens.caption)
+                    .foregroundStyle(Tokens.muted)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             if !links.isEmpty {
                 HStack(spacing: Tokens.micro + 2) {
