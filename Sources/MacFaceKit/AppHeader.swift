@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 
 /// The app identity header — the repeatable "top bar" every 400faces app opens with: the squircle app
 /// icon, the name, the version, the "Made with ♥ 🤖" sign-off, and a trailing slot (typically the `···`
@@ -10,20 +11,22 @@ import SwiftUI
 public struct AppHeader<Trailing: View>: View {
     private let name: String
     private let version: String
+    private let bundledIcon: NSImage?
     private let showsMadeWith: Bool
     private let trailing: Trailing
 
-    public init(name: String, version: String, showsMadeWith: Bool = true,
+    public init(name: String, version: String, bundledIcon: NSImage? = nil, showsMadeWith: Bool = true,
                 @ViewBuilder trailing: () -> Trailing) {
         self.name = name
         self.version = version
+        self.bundledIcon = bundledIcon
         self.showsMadeWith = showsMadeWith
         self.trailing = trailing()
     }
 
     public var body: some View {
         HStack(alignment: .top, spacing: Tokens.space + 3) {
-            AppIconView(fallbackMonogram: String(name.prefix(1)))
+            AppIconView(bundledImage: bundledIcon, fallbackMonogram: String(name.prefix(1)))
                 .frame(width: Tokens.iconHeader, height: Tokens.iconHeader)
             VStack(alignment: .leading, spacing: 2) {
                 Text(name).font(Tokens.title).foregroundStyle(Tokens.text)
@@ -38,7 +41,8 @@ public struct AppHeader<Trailing: View>: View {
 
 /// Convenience for a header with no trailing accessory.
 extension AppHeader where Trailing == EmptyView {
-    public init(name: String, version: String, showsMadeWith: Bool = true) {
-        self.init(name: name, version: version, showsMadeWith: showsMadeWith) { EmptyView() }
+    public init(name: String, version: String, bundledIcon: NSImage? = nil, showsMadeWith: Bool = true) {
+        self.init(name: name, version: version, bundledIcon: bundledIcon,
+                  showsMadeWith: showsMadeWith) { EmptyView() }
     }
 }
