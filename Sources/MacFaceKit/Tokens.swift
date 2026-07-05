@@ -19,7 +19,9 @@ public enum Tokens {
     // MARK: Size — shared control heights + the identity-header icon
     public static let control: CGFloat = 34        // search-bar / settings-box height
     public static let controlButton: CGFloat = 26  // icon + action control height
-    public static let iconHeader: CGFloat = 52     // the app-icon tile in AppHeader
+    public static let iconHeader: CGFloat = 64     // the app-icon tile in AppHeader (native icon raster
+    //                                                 size; balances the ~56pt 3-line identity block —
+    //                                                 the best-of-both between RememBar's 84 + TermTile's 52)
 
     // MARK: Spacing scale — the composites build their layout from these (nothing hardcodes a raw px)
     public static let gap: CGFloat = 16            // between major sections (space × 2)
