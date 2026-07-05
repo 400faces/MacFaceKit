@@ -25,17 +25,24 @@ public struct PrimaryButton: View {
 
     public var body: some View {
         Button(action: action) {
-            HStack(spacing: Tokens.space) {
-                if let systemImage {
-                    Image(systemName: systemImage).font(.system(size: 13, weight: .semibold))
+            ZStack {
+                // The icon + label sit CENTERED (so the button reads balanced, not spread edge-to-edge)…
+                HStack(spacing: Tokens.space) {
+                    if let systemImage {
+                        Image(systemName: systemImage).font(.system(size: 13, weight: .semibold))
+                    }
+                    Text(title).font(Tokens.body.weight(.semibold))
                 }
-                Text(title).font(Tokens.body.weight(.semibold))
+                // …while the optional shortcut hint tucks against the trailing edge, dimmed.
                 if let trailing {
-                    Spacer(minLength: Tokens.space)
-                    Text(trailing).font(Tokens.caption).foregroundStyle(.white.opacity(0.7))
+                    HStack {
+                        Spacer(minLength: 0)
+                        Text(trailing).font(Tokens.caption).foregroundStyle(.white.opacity(0.7))
+                    }
                 }
             }
             .foregroundStyle(.white)
+            .padding(.horizontal, Tokens.space + Tokens.micro)
             .frame(maxWidth: .infinity)
             .frame(minHeight: Tokens.control + Tokens.space)   // ~42pt hero (≈1.5× a standard control)
             .background(
