@@ -21,6 +21,9 @@ Tier 1 — foundation: `Palette` · `Metrics` · `Typography` (from Tokens.swift
 Tier 2 — buttons/controls: `IconButtonStyle` · `GhostIconButton` · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
 Tier 3 — links/text: `ExternalLink`/`LearnMoreLink` (globe + label + ↗ + hover underline).
 Tier 4 — identity: `MadeWithSignoff`/`RobotGlyph` (done, rebuild on tokens) · `AppIconView` (bundled-icon-with-fallback).
+Tier 5 — update flow: `UpdateDialog` (+ `UpdateActionButton`/`UpdateProgressBar`/`ReleaseNotesSection`) — the
+branded Sparkle-flow dialog, Sparkle-FREE. Each app's `SPUUserDriver` maps callbacks → a state and feeds the
+dialog its `name` (via the 7 factories) + `icon` (applied once). Window chrome = `Tokens.updateWindow`.
 Tier 5 — loading: `Shimmer` (ViewModifier) · `SkeletonBlock` · `LoadingRows`.
 Tier 6 — fields/chips: `CommandField`/text-field style · `WordChip` · `SortToggle`.
 Tier 7 — update flow (BOTH apps use Sparkle): `UpdateDialog` · `UpdateProgressBar` · `UpdateActionButton`.

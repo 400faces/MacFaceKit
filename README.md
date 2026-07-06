@@ -19,9 +19,12 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 - `IconButtonStyle` — square icon-control button style (brightens on hover/active/press).
 - `GhostIconButton` — borderless "ghost" icon button (inline/secondary); optional `rowActive` hover fill.
 - `ActionPillButton` — short tinted call-to-action pill.
+- `UpdateDialog` — the shared update-flow dialog (7 states via named factories: permission / checking /
+  available+notes / progress / ready / up-to-date / error). Sparkle-FREE — each app's Sparkle user driver
+  maps its callbacks to a state and supplies the app `name` (strings) + `icon`. Ships `UpdateActionButton`,
+  `UpdateProgressBar`, `ReleaseNotesSection` primitives + the `Tokens.updateWindow` chrome color.
 
-Grow as needed: fields/chips, loading skeletons, the Sparkle update flow, and the settings-window shell
-are next tiers (see `DESIGN.md`).
+Grow as needed: fields/chips, loading skeletons and the settings-window shell are next tiers (see `DESIGN.md`).
 
 ## Use
 ```swift

@@ -43,6 +43,9 @@ public enum Tokens {
     public static let destructive = Color(red: 0.882, green: 0.294, blue: 0.227)
     /// Primary-action blue (macOS dark-mode system accent) — the confirming button, matching Sparkle.
     public static let accent = Color(red: 0.039, green: 0.518, blue: 1.0)
+    /// The update-dialog window chrome — a touch lighter than the panel so it blends with the titlebar.
+    /// Shared cross-app (each app's Sparkle driver sets its update window's background to this).
+    public static let updateWindow = Color(red: 0.157, green: 0.157, blue: 0.169)
 
     // MARK: Typography — the type hierarchy
     public static let title = Font.system(size: 18, weight: .semibold)
@@ -59,4 +62,6 @@ public enum Tokens {
     public static let nsText = NSColor(srgbRed: 0.949, green: 0.953, blue: 0.957, alpha: 1)
     public static let nsMuted = NSColor(srgbRed: 0.596, green: 0.616, blue: 0.643, alpha: 1)
     public static let nsAccent = NSColor(srgbRed: 0.039, green: 0.518, blue: 1.0, alpha: 1)
+    /// NSColor mirror of `updateWindow` — the Sparkle drivers set `window.backgroundColor` to this.
+    public static let nsUpdateWindow = NSColor(srgbRed: 0.157, green: 0.157, blue: 0.169, alpha: 1)
 }
