@@ -43,3 +43,22 @@ App-specific, stays out: search results/thumbnails, alias/catalog editor, `Remem
    the moment both import it.
 
 Outcome: one kit, two apps, identical vocabulary; new 400faces macOS apps start pre-dressed.
+
+## 4. Rules — icon buttons (there are exactly TWO treatments)
+
+Both share ONE hover token — `Tokens.rowActive` fill at `Tokens.radius`. They differ ONLY in the rest state.
+Do not invent a third; pick by whether the control is prominent-standalone or inline-secondary.
+
+- **Boxed** — `IconButtonStyle` / `IconButton` (and RememBar's `IconControlButton`). Always-visible box:
+  `row` fill + `line` border at rest → `rowActive` + `lineStrong` on hover. For **prominent standalone**
+  controls: the `···` overflow, the settings gear, pager arrows. Match the control's height to its row.
+- **Ghost** — `GhostIconButton`. Transparent at rest; glyph brightens `restColor`→`hoverColor`; an OPT-IN
+  (`fill: true`) rounded `rowActive` fill appears on hover. For **inline/secondary** controls: search-field
+  ✕/↵, chip-remove, inline delete.
+
+Ghost `fill` rules (default OFF):
+- Turn `fill: true` ONLY for a roomy (≈28pt), field-scoped control on a **non-`rowActive`** backdrop
+  (e.g. the search field's ✕/↵ on the `field` surface).
+- NEVER fill a glyph that sits on a `rowActive` surface (e.g. a chip-✕ inside a `rowActive` capsule) — the
+  fill collides with the backdrop and reads muddy. Tiny chips stay color-only.
+- Destructive glyphs use `hoverColor: Tokens.destructive` (never raw `.red`).
