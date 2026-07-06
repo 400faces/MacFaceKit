@@ -24,6 +24,11 @@ Tier 4 — identity: `MadeWithSignoff`/`RobotGlyph` (done, rebuild on tokens) ·
 Tier 5 — update flow: `UpdateDialog` (+ `UpdateActionButton`/`UpdateProgressBar`/`ReleaseNotesSection`) — the
 branded Sparkle-flow dialog, Sparkle-FREE. Each app's `SPUUserDriver` maps callbacks → a state and feeds the
 dialog its `name` (via the 7 factories) + `icon` (applied once). Window chrome = `Tokens.updateWindow`.
+`UpdateWindowController` owns the window + model + escape/ack + byte→fraction math behind a semantic `show*`
+API (Sparkle-free); `ReleaseNotesParser`/`ReleaseNotesFormat` flatten the notes markup. The per-app split:
+everything that is NOT a Sparkle type is in the kit; the thin `SPUUserDriver` adapter + the `SPUUpdater`
+lazy-start/stock-fallback stay app-local — irreducibly, because Sparkle is a per-app vendored `binaryTarget`
+that can't live in the public kit (pulling it in via SPM would give consumers two Sparkles).
 Tier 5 — loading: `Shimmer` (ViewModifier) · `SkeletonBlock` · `LoadingRows`.
 Tier 6 — fields/chips: `CommandField`/text-field style · `WordChip` · `SortToggle`.
 Tier 7 — update flow (BOTH apps use Sparkle): `UpdateDialog` · `UpdateProgressBar` · `UpdateActionButton`.

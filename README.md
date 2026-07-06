@@ -23,6 +23,12 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
   available+notes / progress / ready / up-to-date / error). Sparkle-FREE — each app's Sparkle user driver
   maps its callbacks to a state and supplies the app `name` (strings) + `icon`. Ships `UpdateActionButton`,
   `UpdateProgressBar`, `ReleaseNotesSection` primitives + the `Tokens.updateWindow` chrome color.
+- `UpdateWindowController` — the Sparkle-FREE machinery behind `UpdateDialog`: owns the update window
+  (morphs between states), the flow model, escape/acknowledgement bookkeeping, and the download byte→
+  fraction math. Each app pairs it with a thin `SPUUserDriver` adapter that calls its semantic `show*`
+  API — so everything that isn't a Sparkle type lives here once (Sparkle can't: it's a vendored binary).
+- `ReleaseNotesParser` / `ReleaseNotesFormat` — turn appcast release-notes markup (markdown / plain / HTML)
+  into the flat `[String]` the dialog renders. Sparkle-free (the app passes the raw payload).
 
 Grow as needed: fields/chips, loading skeletons and the settings-window shell are next tiers (see `DESIGN.md`).
 
