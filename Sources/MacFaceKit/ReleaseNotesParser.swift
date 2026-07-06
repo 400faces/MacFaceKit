@@ -57,6 +57,16 @@ public enum ReleaseNotesParser {
         return items(from: markup, format: format)
     }
 
+    /// The embedded-notes gate + parse in one place: Sparkle carries release notes ON the appcast item
+    /// (`itemDescription`) ONLY when there is no separate `releaseNotesLink` (a downloaded link arrives via
+    /// the driver's release-notes callback instead). Each app's adapter passes the raw appcast fields, so
+    /// the gate isn't duplicated per app. Returns `[]` when there's a link or nothing renderable.
+    public static func embeddedItems(releaseNotesURL: URL?, description: String?,
+                                     format: ReleaseNotesFormat) -> [String] {
+        guard releaseNotesURL == nil, let description else { return [] }
+        return items(from: description, format: format) ?? []
+    }
+
     /// Flatten HTML to its visible text. Uses `NSAttributedString`'s HTML importer, so call on the main
     /// thread (the driver already does). Returns nil if the importer can't parse the markup.
     private static func htmlToPlainText(_ html: String) -> String? {

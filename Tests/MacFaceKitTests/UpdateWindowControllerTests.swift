@@ -113,7 +113,7 @@ struct UpdateWindowControllerTests {
         await Task.yield()                 // let the task park on the continuation
         c.close()                          // must resume it (the leak-guard)
         await task.value                   // returns iff the continuation resumed
-        guard case .upToDate = c.model.screen else { return }
+        if case .upToDate = c.model.screen {} else { Issue.record("expected .upToDate screen") }
     }
 
     @Test func errorAckButtonResumes() async {
@@ -122,6 +122,6 @@ struct UpdateWindowControllerTests {
         await Task.yield()
         if case let .error(_, ok) = c.model.screen { ok() }   // OK button = resume + close
         await task.value
-        #expect(true)
+        if case .error = c.model.screen {} else { Issue.record("expected .error screen") }
     }
 }

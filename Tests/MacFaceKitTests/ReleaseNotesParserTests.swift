@@ -75,4 +75,23 @@ struct ReleaseNotesParserTests {
     @Test func returnsNilForEmptyData() {
         #expect(ReleaseNotesParser.items(from: Data()) == nil)
     }
+
+    // MARK: Embedded-notes gate (the shared adapter helper)
+
+    @Test func embeddedItemsParsesWhenNoReleaseNotesLink() {
+        #expect(ReleaseNotesParser.embeddedItems(releaseNotesURL: nil, description: "- One\n- Two",
+                                                 format: .markdown) == ["One", "Two"])
+    }
+
+    @Test func embeddedItemsEmptyWhenReleaseNotesLinkPresent() {
+        // A downloaded releaseNotesLink means the notes arrive later (via the driver's notes callback),
+        // NOT embedded — so the embedded gate must yield nothing even if a description is also set.
+        let link = URL(string: "https://example.com/notes.html")
+        #expect(ReleaseNotesParser.embeddedItems(releaseNotesURL: link, description: "- One",
+                                                 format: .markdown) == [])
+    }
+
+    @Test func embeddedItemsEmptyWhenNoDescription() {
+        #expect(ReleaseNotesParser.embeddedItems(releaseNotesURL: nil, description: nil, format: .html) == [])
+    }
 }
