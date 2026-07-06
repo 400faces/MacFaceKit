@@ -18,7 +18,7 @@ from RememBar's `Tokens.swift`: panel/field/row/rowActive/line/lineStrong/text/m
 ## 2. Component set (extract from RememBar, generalize, build on the tokens)
 
 Tier 1 — foundation: `Palette` · `Metrics` · `Typography` (from Tokens.swift).
-Tier 2 — buttons/controls: `IconButtonStyle` · `HoverIconButton` · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
+Tier 2 — buttons/controls: `IconButtonStyle` · `GhostIconButton` · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
 Tier 3 — links/text: `ExternalLink`/`LearnMoreLink` (globe + label + ↗ + hover underline).
 Tier 4 — identity: `MadeWithSignoff`/`RobotGlyph` (done, rebuild on tokens) · `AppIconView` (bundled-icon-with-fallback).
 Tier 5 — loading: `Shimmer` (ViewModifier) · `SkeletonBlock` · `LoadingRows`.

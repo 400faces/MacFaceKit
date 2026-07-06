@@ -28,43 +28,6 @@ public struct IconButtonStyle: ButtonStyle {
     }
 }
 
-/// A self-contained borderless icon button that brightens on hover (glyph only, no tile) + shows the
-/// pointing-hand cursor. For inline affordances (close, edit, chevrons). (From RememBar.)
-public struct HoverIconButton: View {
-    private let systemName: String
-    private let size: CGFloat
-    private let restColor: Color
-    private let hoverColor: Color
-    private let hitSize: CGFloat
-    private let action: () -> Void
-    @State private var hovered = false
-
-    public init(systemName: String, size: CGFloat = 11, restColor: Color = Tokens.quiet,
-                hoverColor: Color = Tokens.text, hitSize: CGFloat = 20, action: @escaping () -> Void) {
-        self.systemName = systemName
-        self.size = size
-        self.restColor = restColor
-        self.hoverColor = hoverColor
-        self.hitSize = hitSize
-        self.action = action
-    }
-
-    public var body: some View {
-        Button(action: action) {
-            Image(systemName: systemName)
-                .font(.system(size: size, weight: .semibold))
-                .foregroundStyle(hovered ? hoverColor : restColor)
-                .frame(width: hitSize, height: hitSize)
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .onHover { hovering in
-            hovered = hovering
-            if hovering { NSCursor.pointingHand.set() } else { NSCursor.arrow.set() }
-        }
-    }
-}
-
 /// A short tinted pill — a compact call-to-action (e.g. the warning/accent action in a notice).
 /// (From RememBar.)
 public struct ActionPillButton: View {

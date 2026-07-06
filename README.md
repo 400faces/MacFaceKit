@@ -17,7 +17,7 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 - `ExternalLink` — label + ↗, hover underline (opens outside the app).
 - `MadeWithSignoff` / `RobotGlyph` — the "Made with ♥ & 🤖" sign-off.
 - `IconButtonStyle` — square icon-control button style (brightens on hover/active/press).
-- `HoverIconButton` — self-contained borderless icon button.
+- `GhostIconButton` — borderless "ghost" icon button (inline/secondary); optional `rowActive` hover fill.
 - `ActionPillButton` — short tinted call-to-action pill.
 
 Grow as needed: fields/chips, loading skeletons, the Sparkle update flow, and the settings-window shell
