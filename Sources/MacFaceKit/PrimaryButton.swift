@@ -25,20 +25,16 @@ public struct PrimaryButton: View {
 
     public var body: some View {
         Button(action: action) {
-            ZStack {
-                // The icon + label sit CENTERED (so the button reads balanced, not spread edge-to-edge)…
-                HStack(spacing: Tokens.space) {
-                    if let systemImage {
-                        Image(systemName: systemImage).font(.system(size: 13, weight: .semibold))
-                    }
-                    Text(title).font(Tokens.body.weight(.semibold))
+            // Icon + label lead (left-aligned, matching the app's other buttons/links); the optional
+            // shortcut hint tucks against the trailing edge, dimmed.
+            HStack(spacing: Tokens.space) {
+                if let systemImage {
+                    Image(systemName: systemImage).font(.system(size: 13, weight: .semibold))
                 }
-                // …while the optional shortcut hint tucks against the trailing edge, dimmed.
+                Text(title).font(Tokens.body.weight(.semibold))
+                Spacer(minLength: Tokens.space)
                 if let trailing {
-                    HStack {
-                        Spacer(minLength: 0)
-                        Text(trailing).font(Tokens.caption).foregroundStyle(.white.opacity(0.7))
-                    }
+                    Text(trailing).font(Tokens.caption).foregroundStyle(.white.opacity(0.7))
                 }
             }
             .foregroundStyle(.white)
