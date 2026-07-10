@@ -1,0 +1,8 @@
+version: 2
+updates:
+  # SwiftPM has no Dependabot ecosystem and the package has no third-party deps; github-actions
+  # keeps the CI workflow action pins (actions/checkout, etc.) current.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

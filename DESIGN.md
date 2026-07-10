@@ -18,7 +18,7 @@ from RememBar's `Tokens.swift`: panel/field/row/rowActive/line/lineStrong/text/m
 ## 2. Component set (extract from RememBar, generalize, build on the tokens)
 
 Tier 1 — foundation: `Palette` · `Metrics` · `Typography` (from Tokens.swift).
-Tier 2 — buttons/controls: `IconButtonStyle` · `GhostIconButton` · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
+Tier 2 — buttons/controls: `IconButtonStyle` · `GhostIconButton` · `PrimaryButton` (accent hero, left-aligned) · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
 Tier 3 — links/text: `ExternalLink`/`LearnMoreLink` (globe + label + ↗ + hover underline).
 Tier 4 — identity: `MadeWithSignoff`/`RobotGlyph` (done, rebuild on tokens) · `AppIconView` (bundled-icon-with-fallback).
 Tier 5 — update flow: `UpdateDialog` (+ `UpdateActionButton`/`UpdateProgressBar`/`ReleaseNotesSection`) — the
@@ -29,9 +29,8 @@ API (Sparkle-free); `ReleaseNotesParser`/`ReleaseNotesFormat` flatten the notes 
 everything that is NOT a Sparkle type is in the kit; the thin `SPUUserDriver` adapter + the `SPUUpdater`
 lazy-start/stock-fallback stay app-local — irreducibly, because Sparkle is a per-app vendored `binaryTarget`
 that can't live in the public kit (pulling it in via SPM would give consumers two Sparkles).
-Tier 5 — loading: `Shimmer` (ViewModifier) · `SkeletonBlock` · `LoadingRows`.
-Tier 6 — fields/chips: `CommandField`/text-field style · `WordChip` · `SortToggle`.
-Tier 7 — update flow (BOTH apps use Sparkle): `UpdateDialog` · `UpdateProgressBar` · `UpdateActionButton`.
+Tier 6 — loading: `Shimmer` (ViewModifier) · `SkeletonBlock` · `LoadingRows`.
+Tier 7 — fields/chips: `CommandField`/text-field style · `WordChip` · `SortToggle`.
 Tier 8 — settings shell: the settings-window scaffold (tab bar + `SettingsTabButton` + `SettingsRootView`
 pattern) — the proven container RememBar hosts its rich rows in. **This is what TermTile needs** to host
 About/actions with the polished rows (the container question resolves to "adopt RememBar's settings window").

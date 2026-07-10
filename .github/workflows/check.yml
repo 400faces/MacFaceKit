@@ -1,0 +1,31 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: macos-15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Select Xcode (Swift 6 toolchain)
+        run: sudo xcode-select -switch /Applications/Xcode.app
+      - name: Report Swift version
+        run: swift --version
+      # MacFaceKit is dependency-light + Sparkle-FREE (Sparkle lives only in the consuming apps),
+      # so no vendoring step — a plain build/test/lint gates every tag both apps pin.
+      - name: Build
+        run: swift build
+      - name: Test
+        run: swift test
+      - name: Install SwiftLint
+        run: brew install swiftlint
+      - name: Lint
+        run: swiftlint --strict

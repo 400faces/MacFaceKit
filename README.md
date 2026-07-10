@@ -19,6 +19,8 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 - `IconButtonStyle` — square icon-control button style (brightens on hover/active/press).
 - `GhostIconButton` — borderless "ghost" icon button (inline/secondary); optional `rowActive` hover fill.
 - `ActionPillButton` — short tinted call-to-action pill.
+- `PrimaryButton` — the accent-filled hero call-to-action (left-aligned icon+label, optional trailing
+  shortcut hint). Both apps' one hero action (RememBar's primary; TermTile's "Rearrange now").
 - `UpdateDialog` — the shared update-flow dialog (7 states via named factories: permission / checking /
   available+notes / progress / ready / up-to-date / error). Sparkle-FREE — each app's Sparkle user driver
   maps its callbacks to a state and supplies the app `name` (strings) + `icon`. Ships `UpdateActionButton`,
@@ -34,7 +36,8 @@ Grow as needed: fields/chips, loading skeletons and the settings-window shell ar
 
 ## Use
 ```swift
-.package(url: "https://github.com/400faces/MacFaceKit", from: "0.1.0")  // once tagged
-.package(path: "../MacFaceKit")                                          // local, fast iteration
+// Public + tagged — resolves on any clone / CI, no local checkout. Pin to a minor line:
+.package(url: "https://github.com/400faces/MacFaceKit.git", .upToNextMinor(from: "0.3.2"))
 ```
-Then `import MacFaceKit`.
+Then `import MacFaceKit`. For co-developing the kit alongside a consumer, temporarily override with
+`swift package edit MacFaceKit --path ../MacFaceKit` (then `unedit` + `update` to re-pin the tag).
