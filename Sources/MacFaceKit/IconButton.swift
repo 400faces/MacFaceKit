@@ -33,11 +33,11 @@ public struct IconButton: View {
             Image(systemName: systemImage)
                 .font(.system(size: size, weight: .semibold))
                 .frame(width: Tokens.controlButton, height: Tokens.controlButton)
-                .overlay(alignment: .bottomTrailing) {
+                .overlay(alignment: .topTrailing) {
                     if attention {
                         AttentionDot(size: Tokens.attentionDot)
                             .padding(.trailing, Tokens.micro)
-                            .padding(.bottom, Tokens.micro)
+                            .padding(.top, Tokens.micro)
                     }
                 }
                 .contentShape(Rectangle())

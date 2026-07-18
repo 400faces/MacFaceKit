@@ -29,8 +29,8 @@ public struct SectionCard<Content: View>: View {
     }
 }
 
-/// A permission / warning notice — a `warning`-tinted card (icon + title + body + a deep-link). Reads
-/// as an alert, not another form row. Reused for any "grant this to continue" prompt.
+/// A permission / warning notice — a `warning`-tinted card (icon + title + body + a button-like
+/// deep-link). Reads as an alert, not another form row. Reused for any "grant this to continue" prompt.
 public struct NoticeCard: View {
     private let title: String
     private let message: String
@@ -49,7 +49,8 @@ public struct NoticeCard: View {
             Label(title, systemImage: "exclamationmark.triangle.fill")
                 .font(Tokens.caption.weight(.semibold)).foregroundStyle(Tokens.warning)
             Text(message).font(Tokens.caption).foregroundStyle(Tokens.muted)
-            ExternalLink(linkLabel, url)
+                .fixedSize(horizontal: false, vertical: true)
+            LinkButton(linkLabel, url: url, systemImage: "gearshape")
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Tokens.inset)

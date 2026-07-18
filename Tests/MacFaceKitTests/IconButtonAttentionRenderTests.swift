@@ -6,8 +6,8 @@ import Testing
 @MainActor
 @Suite("IconButton attention render")
 struct IconButtonAttentionRenderTests {
-    @Test("attention dot renders in the lower-right quadrant without resizing the button")
-    func attentionDotRendersInLowerRightQuadrantWithoutResizingTheButton() throws {
+    @Test("attention dot renders in the upper-right quadrant without resizing the button")
+    func attentionDotRendersInUpperRightQuadrantWithoutResizingTheButton() throws {
         let plain = try renderedButtonBitmap(attention: false)
         let attended = try renderedButtonBitmap(attention: true)
 
@@ -17,7 +17,7 @@ struct IconButtonAttentionRenderTests {
         let bounds = try #require(orangeFamilyBounds(in: attended))
         #expect(bounds.count > 20)
         #expect(bounds.minX > attended.pixelsWide / 2)
-        #expect(bounds.minY > attended.pixelsHigh / 2)
+        #expect(bounds.maxY < attended.pixelsHigh / 2)
     }
 
     @Test("menu row attention dot renders at the trailing edge without resizing the row")

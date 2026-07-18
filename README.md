@@ -17,7 +17,7 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 - `ExternalLink` — label + ↗, hover underline (opens outside the app).
 - `MadeWithSignoff` / `RobotGlyph` — the "Made with ♥ & 🤖" sign-off.
 - `AttentionDot` — reusable warning-colored attention mark for app controls.
-- `IconButtonStyle` / `IconButton` — square icon-control button style; optional attention dot.
+- `IconButtonStyle` / `IconButton` — square icon-control button style; optional upper-right attention dot.
 - `GhostIconButton` — borderless "ghost" icon button (inline/secondary); optional `rowActive` hover fill.
 - `ActionPillButton` — short tinted call-to-action pill.
 - `PrimaryButton` — the accent-filled hero call-to-action (left-aligned icon+label, optional trailing
@@ -33,15 +33,15 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 - `ReleaseNotesParser` / `ReleaseNotesFormat` — turn appcast release-notes markup (markdown / plain / HTML)
   into the flat `[String]` the dialog renders. Sparkle-free (the app passes the raw payload).
 - `OverflowMenu` / `MenuAction` — shared ellipsis menu. Actions can opt into generic attention state,
-  surfaced on the ellipsis button and attended row through `AttentionDot`; the owning app supplies any
-  attention accessibility hint used by both the closed trigger and row.
+  surfaced on the upper-right ellipsis corner and attended row through `AttentionDot`; the owning app
+  supplies any attention accessibility hint used by both the closed trigger and row.
 
 Grow as needed: fields/chips, loading skeletons and the settings-window shell are next tiers (see `DESIGN.md`).
 
 ## Use
 ```swift
 // Public + tagged — resolves on any clone / CI, no local checkout. Pin to a minor line:
-.package(url: "https://github.com/400faces/MacFaceKit.git", .upToNextMinor(from: "0.4.0"))
+.package(url: "https://github.com/400faces/MacFaceKit.git", .upToNextMinor(from: "0.4.1"))
 ```
 Then `import MacFaceKit`. For co-developing the kit alongside a consumer, temporarily override with
 `swift package edit MacFaceKit --path ../MacFaceKit` (then `unedit` + `update` to re-pin the tag).

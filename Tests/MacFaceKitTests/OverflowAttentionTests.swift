@@ -45,8 +45,9 @@ struct OverflowAttentionTests {
     func iconButtonAnchorsAttentionAtTheButtonCorner() {
         let source = Self.source("Sources/MacFaceKit/IconButton.swift")
 
-        #expect(source.contains(".overlay(alignment: .bottomTrailing)"),
-                "attention should sit on the button's lower-right corner instead of reading as another ellipsis dot")
+        #expect(source.contains(".overlay(alignment: .topTrailing)"),
+                "attention should sit on the button's upper-right badge corner")
+        #expect(!source.contains(".overlay(alignment: .bottomTrailing)"))
         #expect(!source.contains("ZStack(alignment: .topTrailing)"))
     }
 
@@ -76,6 +77,16 @@ struct OverflowAttentionTests {
         #expect(source.contains(".accessibilityHint(accessibilityHint)"))
         #expect(!source.contains("Update available"),
                 "MacFaceKit must expose generic semantics without hardcoding app-specific update copy")
+    }
+
+    @Test("notice card uses the shared button-like settings link")
+    func noticeCardUsesSharedButtonLikeSettingsLink() {
+        let source = Self.source("Sources/MacFaceKit/SectionCard.swift")
+
+        #expect(source.contains("LinkButton(linkLabel, url: url"),
+                "notice actions should use the shared full-width link button affordance")
+        #expect(!source.contains("ExternalLink(linkLabel, url)"),
+                "warning notices should not hide required actions behind a low-emphasis text link")
     }
 
     private static func source(_ path: String) -> String {
