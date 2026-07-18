@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 /// A labeled settings group: a small uppercase header over a rounded `row` card with a `line` border
@@ -30,18 +31,27 @@ public struct SectionCard<Content: View>: View {
 }
 
 /// A permission / warning notice — a `warning`-tinted card (icon + title + body + a button-like
-/// deep-link). Reads as an alert, not another form row. Reused for any "grant this to continue" prompt.
+/// action). Reads as an alert, not another form row. Reused for any "grant this to continue" prompt.
 public struct NoticeCard: View {
     private let title: String
     private let message: String
-    private let linkLabel: String
-    private let url: URL
+    private let actionLabel: String
+    private let actionSystemImage: String
+    private let action: () -> Void
 
     public init(title: String, message: String, linkLabel: String, url: URL) {
+        self.init(title: title, message: message, actionLabel: linkLabel) {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    public init(title: String, message: String, actionLabel: String,
+                actionSystemImage: String = "gearshape", action: @escaping () -> Void) {
         self.title = title
         self.message = message
-        self.linkLabel = linkLabel
-        self.url = url
+        self.actionLabel = actionLabel
+        self.actionSystemImage = actionSystemImage
+        self.action = action
     }
 
     public var body: some View {
@@ -50,7 +60,7 @@ public struct NoticeCard: View {
                 .font(Tokens.caption.weight(.semibold)).foregroundStyle(Tokens.warning)
             Text(message).font(Tokens.caption).foregroundStyle(Tokens.muted)
                 .fixedSize(horizontal: false, vertical: true)
-            LinkButton(linkLabel, url: url, systemImage: "gearshape")
+            LinkButton(actionLabel, systemImage: actionSystemImage, action: action)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Tokens.inset)

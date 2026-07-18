@@ -83,10 +83,29 @@ struct OverflowAttentionTests {
     func noticeCardUsesSharedButtonLikeSettingsLink() {
         let source = Self.source("Sources/MacFaceKit/SectionCard.swift")
 
-        #expect(source.contains("LinkButton(linkLabel, url: url"),
+        #expect(source.contains("linkLabel: String, url: URL"),
+                "notice cards should preserve the direct settings-link API")
+        #expect(source.contains("actionLabel: linkLabel"),
+                "the URL initializer should delegate into the shared action path")
+        #expect(source.contains("LinkButton(actionLabel"),
                 "notice actions should use the shared full-width link button affordance")
         #expect(!source.contains("ExternalLink(linkLabel, url)"),
                 "warning notices should not hide required actions behind a low-emphasis text link")
+    }
+
+    @Test("notice card supports caller-owned actions without duplicating button styling")
+    func noticeCardSupportsCallerOwnedActionsWithoutDuplicatingButtonStyling() {
+        let notice = Self.source("Sources/MacFaceKit/SectionCard.swift")
+        let linkButton = Self.source("Sources/MacFaceKit/LinkButton.swift")
+
+        #expect(notice.contains("actionLabel: String"),
+                "notice cards need a generic action path for reset-and-open flows")
+        #expect(notice.contains("LinkButton(actionLabel"),
+                "notice action rows should still use the shared button-like affordance")
+        #expect(linkButton.contains("action: @escaping () -> Void"),
+                "LinkButton should own the reusable styling while callers own behavior")
+        #expect(!notice.contains("Button {"),
+                "NoticeCard must not duplicate LinkButton's button styling")
     }
 
     private static func source(_ path: String) -> String {

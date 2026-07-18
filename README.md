@@ -14,6 +14,8 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 
 ## Components
 - `ActionRow` — icon + title action row; hover highlight; destructive = red-fill/white on hover.
+- `LinkButton` — full-width outlined action affordance for external links or caller-owned actions that
+  should read like a button.
 - `ExternalLink` — label + ↗, hover underline (opens outside the app).
 - `MadeWithSignoff` / `RobotGlyph` — the "Made with ♥ & 🤖" sign-off.
 - `AttentionDot` — reusable warning-colored attention mark for app controls.
@@ -41,7 +43,7 @@ Grow as needed: fields/chips, loading skeletons and the settings-window shell ar
 ## Use
 ```swift
 // Public + tagged — resolves on any clone / CI, no local checkout. Pin to a minor line:
-.package(url: "https://github.com/400faces/MacFaceKit.git", .upToNextMinor(from: "0.4.1"))
+.package(url: "https://github.com/400faces/MacFaceKit.git", .upToNextMinor(from: "0.4.2"))
 ```
 Then `import MacFaceKit`. For co-developing the kit alongside a consumer, temporarily override with
 `swift package edit MacFaceKit --path ../MacFaceKit` (then `unedit` + `update` to re-pin the tag).

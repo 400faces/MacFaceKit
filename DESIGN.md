@@ -19,7 +19,8 @@ from RememBar's `Tokens.swift`: panel/field/row/rowActive/line/lineStrong/text/m
 
 Tier 1 — foundation: `Palette` · `Metrics` · `Typography` (from Tokens.swift).
 Tier 2 — buttons/controls: `IconButtonStyle` · `IconButton` with optional `AttentionDot` · `GhostIconButton` · `PrimaryButton` (accent hero, left-aligned) · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
-Tier 3 — links/text: `ExternalLink`/`LearnMoreLink` (globe + label + ↗ + hover underline).
+Tier 3 — links/actions/text: `LinkButton` (full-width button-like link or caller-owned action),
+`ExternalLink`/`LearnMoreLink` (globe + label + ↗ + hover underline).
 Tier 4 — identity: `MadeWithSignoff`/`RobotGlyph` (done, rebuild on tokens) · `AppIconView` (bundled-icon-with-fallback).
 Tier 5 — update flow: `UpdateDialog` (+ `UpdateActionButton`/`UpdateProgressBar`/`ReleaseNotesSection`) — the
 branded Sparkle-flow dialog, Sparkle-FREE. Each app's `SPUUserDriver` maps callbacks → a state and feeds the
