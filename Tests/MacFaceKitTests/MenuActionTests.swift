@@ -13,15 +13,18 @@ struct MenuActionTests {
         #expect(a.destructive == false)
         #expect(a.enabled == true)
         #expect(a.attention == false)
+        #expect(a.attentionAccessibilityHint == nil)
     }
 
-    @Test("destructive + disabled + attention flags carry through")
+    @Test("destructive + disabled + attention state carry through")
     func flags() {
         let a = MenuAction(title: "Uninstall…", systemImage: "trash", destructive: true,
-                           enabled: false, attention: true) {}
+                           enabled: false, attention: true,
+                           attentionAccessibilityHint: "Update available") {}
         #expect(a.destructive == true)
         #expect(a.enabled == false)
         #expect(a.attention == true)
+        #expect(a.attentionAccessibilityHint == "Update available")
     }
 
     @Test("invoke runs the action once")

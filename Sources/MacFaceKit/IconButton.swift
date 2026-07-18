@@ -10,32 +10,40 @@ public struct IconButton: View {
     private let size: CGFloat
     private let active: Bool
     private let attention: Bool
+    private let accessibilityHint: String?
     private let action: () -> Void
     @State private var hovered = false
 
     public init(systemImage: String, size: CGFloat = 13, active: Bool = false,
-                attention: Bool = false, action: @escaping () -> Void) {
+                attention: Bool = false, accessibilityHint: String? = nil, action: @escaping () -> Void) {
         self.systemImage = systemImage
         self.size = size
         self.active = active
         self.attention = attention
+        self.accessibilityHint = accessibilityHint
         self.action = action
+    }
+
+    private var resolvedAccessibilityHint: String {
+        accessibilityHint ?? ""
     }
 
     public var body: some View {
         Button(action: action) {
-            ZStack(alignment: .topTrailing) {
-                Image(systemName: systemImage)
-                    .font(.system(size: size, weight: .semibold))
-
-                if attention {
-                    AttentionDot()
+            Image(systemName: systemImage)
+                .font(.system(size: size, weight: .semibold))
+                .frame(width: Tokens.controlButton, height: Tokens.controlButton)
+                .overlay(alignment: .bottomTrailing) {
+                    if attention {
+                        AttentionDot(size: Tokens.attentionDot)
+                            .padding(.trailing, Tokens.micro)
+                            .padding(.bottom, Tokens.micro)
+                    }
                 }
-            }
-            .frame(width: Tokens.controlButton, height: Tokens.controlButton)
-            .contentShape(Rectangle())
+                .contentShape(Rectangle())
         }
         .buttonStyle(IconButtonStyle(active: active, hovered: hovered))
+        .accessibilityHint(resolvedAccessibilityHint)
         .onHover { hovering in
             hovered = hovering
             if hovering { NSCursor.pointingHand.set() } else { NSCursor.arrow.set() }

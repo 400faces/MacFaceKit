@@ -59,8 +59,11 @@ Do not invent a third; pick by whether the control is prominent-standalone or in
 - **Boxed** — `IconButtonStyle` / `IconButton` (and RememBar's `IconControlButton`). Always-visible box:
   `row` fill + `line` border at rest → `rowActive` + `lineStrong` on hover. For **prominent standalone**
   controls: the `···` overflow, the settings gear, pager arrows. Match the control's height to its row.
-  Use the optional `AttentionDot` for generic pending/available states; the owning app remains responsible
-  for the semantic label or surrounding context.
+  Use the optional bottom-right `AttentionDot` for generic pending/available states; the owning app remains
+  responsible for the semantic label or surrounding context.
+- **Menu attention** — `MenuAction.attention` marks the overflow button and its row. `MenuAction` may carry
+  an app-owned accessibility hint for the closed trigger and attended row; MacFaceKit must not hardcode
+  app-specific state copy.
 - **Ghost** — `GhostIconButton`. Transparent at rest; glyph brightens `restColor`→`hoverColor`; an OPT-IN
   (`fill: true`) rounded `rowActive` fill appears on hover. For **inline/secondary** controls: search-field
   ✕/↵, chip-remove, inline delete.

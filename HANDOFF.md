@@ -7,20 +7,21 @@ their own handoff: `RememBar/HANDOFF.md`, `termtile/HANDOFF.md`._
 
 The shared 400faces macOS SwiftUI design system — fixed-dark tokens + components — consumed by **both**
 RememBar and TermTile so they read as UI-twins. Public repo (`github.com/400faces/MacFaceKit`); both apps
-pin it `.upToNextMinor(from: "0.3.2")` via the git URL (auto-resolved, no local checkout).
+should pin the minor line they have adopted via the git URL (auto-resolved, no local checkout). TermTile is
+moving from `0.3.x` to `0.4.x` for the improved attention indicators.
 
 ## Current state (all green)
 
 | Check | State |
 |---|---|
-| Build / Test / Lint | ✅ `swift build && swift test && swiftlint --strict` — 32 tests, 0 violations |
+| Build / Test / Lint | ✅ `swift build && swift test && swiftlint --strict` — 39 tests, 0 violations |
 | CI | ✅ `.github/workflows/check.yml` (added this session — build/test/lint on push+PR) |
-| Git | ✅ `master` == `origin/master`, tree clean |
-| Latest tag | **v0.3.3** (both apps pin the 0.3.x line) |
+| Git | ✅ `v0.4.0` is the consumer-ready attention-indicator polish tag |
+| Latest tag | **v0.4.0** (TermTile should adopt this line for row/button attention polish) |
 
 ## Component tiers (see `DESIGN.md` for the full spec)
 
-Tokens · icon buttons (`IconButtonStyle`/`IconButton` with optional `AttentionDot`/`GhostIconButton`) · `PrimaryButton` (accent hero) · links
+Tokens · icon buttons (`IconButtonStyle`/`IconButton` with optional bottom-right `AttentionDot`/`GhostIconButton`) · `PrimaryButton` (accent hero) · links
 (`ExternalLink`/`LearnMoreLink`) · identity (`AppIdentityCard`/`AppInfo`/`AppIconView`/`MadeWithSignoff`) ·
 **update flow** (`UpdateDialog` + `UpdateWindowController` + `ReleaseNotesParser` — Sparkle-FREE; each app
 adds only a thin `SPUUserDriver` adapter) · `OverflowMenu` · `SectionCard` · settings-shell primitives.

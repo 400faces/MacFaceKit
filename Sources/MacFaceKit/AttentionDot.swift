@@ -6,7 +6,7 @@ public struct AttentionDot: View {
     private let size: CGFloat
     private let color: Color
 
-    public init(size: CGFloat = 5, color: Color = Tokens.warning) {
+    public init(size: CGFloat = Tokens.attentionDot, color: Color = Tokens.warning) {
         self.size = size
         self.color = color
     }

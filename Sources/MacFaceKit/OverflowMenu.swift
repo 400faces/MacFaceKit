@@ -8,15 +8,18 @@ public struct MenuAction {
     public let destructive: Bool
     public let enabled: Bool
     public let attention: Bool
+    public let attentionAccessibilityHint: String?
     public let action: () -> Void
 
     public init(title: String, systemImage: String, destructive: Bool = false,
-                enabled: Bool = true, attention: Bool = false, action: @escaping () -> Void) {
+                enabled: Bool = true, attention: Bool = false,
+                attentionAccessibilityHint: String? = nil, action: @escaping () -> Void) {
         self.title = title
         self.systemImage = systemImage
         self.destructive = destructive
         self.enabled = enabled
         self.attention = attention
+        self.attentionAccessibilityHint = attentionAccessibilityHint
         self.action = action
     }
 }
@@ -35,15 +38,22 @@ public struct OverflowMenu: View {
         self.width = width
     }
 
+    private var attentionAccessibilityHint: String? {
+        actions.first { $0.attention && $0.attentionAccessibilityHint != nil }?.attentionAccessibilityHint
+    }
+
     public var body: some View {
-        IconButton(systemImage: "ellipsis", active: open, attention: actions.contains { $0.attention }) {
+        IconButton(systemImage: "ellipsis", active: open, attention: actions.contains { $0.attention },
+                   accessibilityHint: attentionAccessibilityHint) {
             open.toggle()
         }
             .popover(isPresented: $open, arrowEdge: .bottom) {
                 VStack(spacing: 1) {
                     ForEach(Array(actions.enumerated()), id: \.offset) { _, item in
                         MenuRow(title: item.title, systemImage: item.systemImage,
-                                destructive: item.destructive, enabled: item.enabled) {
+                                destructive: item.destructive, enabled: item.enabled,
+                                attention: item.attention,
+                                attentionAccessibilityHint: item.attentionAccessibilityHint) {
                             open = false
                             item.action()
                         }

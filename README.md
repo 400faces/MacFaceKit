@@ -8,15 +8,15 @@ their general-purpose functionality differs.
 differently. Lean by design: extend only as a real need appears.
 
 ## Tokens (`Tokens`)
-One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, `controlButton`),
-**color** (panel/field/row/rowActive/line/lineStrong/text/muted/quiet/warning/accent), and
+One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, `controlButton`,
+`attentionDot`), **color** (panel/field/row/rowActive/line/lineStrong/text/muted/quiet/warning/accent), and
 **typography** (`title`/`body`/`caption`/`label`). Nothing in the kit hardcodes a raw value.
 
 ## Components
 - `ActionRow` — icon + title action row; hover highlight; destructive = red-fill/white on hover.
 - `ExternalLink` — label + ↗, hover underline (opens outside the app).
 - `MadeWithSignoff` / `RobotGlyph` — the "Made with ♥ & 🤖" sign-off.
-- `AttentionDot` — small reusable attention mark for icon-sized controls.
+- `AttentionDot` — reusable warning-colored attention mark for app controls.
 - `IconButtonStyle` / `IconButton` — square icon-control button style; optional attention dot.
 - `GhostIconButton` — borderless "ghost" icon button (inline/secondary); optional `rowActive` hover fill.
 - `ActionPillButton` — short tinted call-to-action pill.
@@ -33,14 +33,15 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 - `ReleaseNotesParser` / `ReleaseNotesFormat` — turn appcast release-notes markup (markdown / plain / HTML)
   into the flat `[String]` the dialog renders. Sparkle-free (the app passes the raw payload).
 - `OverflowMenu` / `MenuAction` — shared ellipsis menu. Actions can opt into generic attention state,
-  surfaced on the ellipsis button through `AttentionDot`.
+  surfaced on the ellipsis button and attended row through `AttentionDot`; the owning app supplies any
+  attention accessibility hint used by both the closed trigger and row.
 
 Grow as needed: fields/chips, loading skeletons and the settings-window shell are next tiers (see `DESIGN.md`).
 
 ## Use
 ```swift
 // Public + tagged — resolves on any clone / CI, no local checkout. Pin to a minor line:
-.package(url: "https://github.com/400faces/MacFaceKit.git", .upToNextMinor(from: "0.3.2"))
+.package(url: "https://github.com/400faces/MacFaceKit.git", .upToNextMinor(from: "0.4.0"))
 ```
 Then `import MacFaceKit`. For co-developing the kit alongside a consumer, temporarily override with
 `swift package edit MacFaceKit --path ../MacFaceKit` (then `unedit` + `update` to re-pin the tag).
