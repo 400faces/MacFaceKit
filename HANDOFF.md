@@ -1,6 +1,6 @@
 # MacFaceKit — Handoff
 
-_Last updated: 2026-07-10. The single spot to pick up the shared design system. Consumers each have
+_Last updated: 2026-07-18. The single spot to pick up the shared design system. Consumers each have
 their own handoff: `RememBar/HANDOFF.md`, `termtile/HANDOFF.md`._
 
 ## What it is
@@ -13,14 +13,14 @@ pin it `.upToNextMinor(from: "0.3.2")` via the git URL (auto-resolved, no local 
 
 | Check | State |
 |---|---|
-| Build / Test / Lint | ✅ `swift build && swift test && swiftlint --strict` — 29 tests, 0 violations |
+| Build / Test / Lint | ✅ `swift build && swift test && swiftlint --strict` — 32 tests, 0 violations |
 | CI | ✅ `.github/workflows/check.yml` (added this session — build/test/lint on push+PR) |
 | Git | ✅ `master` == `origin/master`, tree clean |
-| Latest tag | **v0.3.2** (both apps pin the 0.3.x line) |
+| Latest tag | **v0.3.3** (both apps pin the 0.3.x line) |
 
 ## Component tiers (see `DESIGN.md` for the full spec)
 
-Tokens · icon buttons (`IconButtonStyle`/`GhostIconButton`) · `PrimaryButton` (accent hero) · links
+Tokens · icon buttons (`IconButtonStyle`/`IconButton` with optional `AttentionDot`/`GhostIconButton`) · `PrimaryButton` (accent hero) · links
 (`ExternalLink`/`LearnMoreLink`) · identity (`AppIdentityCard`/`AppInfo`/`AppIconView`/`MadeWithSignoff`) ·
 **update flow** (`UpdateDialog` + `UpdateWindowController` + `ReleaseNotesParser` — Sparkle-FREE; each app
 adds only a thin `SPUUserDriver` adapter) · `OverflowMenu` · `SectionCard` · settings-shell primitives.

@@ -9,23 +9,31 @@ public struct IconButton: View {
     private let systemImage: String
     private let size: CGFloat
     private let active: Bool
+    private let attention: Bool
     private let action: () -> Void
     @State private var hovered = false
 
     public init(systemImage: String, size: CGFloat = 13, active: Bool = false,
-                action: @escaping () -> Void) {
+                attention: Bool = false, action: @escaping () -> Void) {
         self.systemImage = systemImage
         self.size = size
         self.active = active
+        self.attention = attention
         self.action = action
     }
 
     public var body: some View {
         Button(action: action) {
-            Image(systemName: systemImage)
-                .font(.system(size: size, weight: .semibold))
-                .frame(width: Tokens.controlButton, height: Tokens.controlButton)
-                .contentShape(Rectangle())
+            ZStack(alignment: .topTrailing) {
+                Image(systemName: systemImage)
+                    .font(.system(size: size, weight: .semibold))
+
+                if attention {
+                    AttentionDot()
+                }
+            }
+            .frame(width: Tokens.controlButton, height: Tokens.controlButton)
+            .contentShape(Rectangle())
         }
         .buttonStyle(IconButtonStyle(active: active, hovered: hovered))
         .onHover { hovering in

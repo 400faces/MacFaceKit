@@ -18,7 +18,7 @@ from RememBar's `Tokens.swift`: panel/field/row/rowActive/line/lineStrong/text/m
 ## 2. Component set (extract from RememBar, generalize, build on the tokens)
 
 Tier 1 — foundation: `Palette` · `Metrics` · `Typography` (from Tokens.swift).
-Tier 2 — buttons/controls: `IconButtonStyle` · `GhostIconButton` · `PrimaryButton` (accent hero, left-aligned) · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
+Tier 2 — buttons/controls: `IconButtonStyle` · `IconButton` with optional `AttentionDot` · `GhostIconButton` · `PrimaryButton` (accent hero, left-aligned) · `ActionPillButton` · `ActionRow` (done, rebuild on tokens) · `SettingsTabButton`.
 Tier 3 — links/text: `ExternalLink`/`LearnMoreLink` (globe + label + ↗ + hover underline).
 Tier 4 — identity: `MadeWithSignoff`/`RobotGlyph` (done, rebuild on tokens) · `AppIconView` (bundled-icon-with-fallback).
 Tier 5 — update flow: `UpdateDialog` (+ `UpdateActionButton`/`UpdateProgressBar`/`ReleaseNotesSection`) — the
@@ -59,6 +59,8 @@ Do not invent a third; pick by whether the control is prominent-standalone or in
 - **Boxed** — `IconButtonStyle` / `IconButton` (and RememBar's `IconControlButton`). Always-visible box:
   `row` fill + `line` border at rest → `rowActive` + `lineStrong` on hover. For **prominent standalone**
   controls: the `···` overflow, the settings gear, pager arrows. Match the control's height to its row.
+  Use the optional `AttentionDot` for generic pending/available states; the owning app remains responsible
+  for the semantic label or surrounding context.
 - **Ghost** — `GhostIconButton`. Transparent at rest; glyph brightens `restColor`→`hoverColor`; an OPT-IN
   (`fill: true`) rounded `rowActive` fill appears on hover. For **inline/secondary** controls: search-field
   ✕/↵, chip-remove, inline delete.

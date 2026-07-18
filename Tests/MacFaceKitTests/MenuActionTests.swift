@@ -12,13 +12,16 @@ struct MenuActionTests {
         #expect(a.systemImage == "arrow.triangle.2.circlepath")
         #expect(a.destructive == false)
         #expect(a.enabled == true)
+        #expect(a.attention == false)
     }
 
-    @Test("destructive + disabled flags carry through")
+    @Test("destructive + disabled + attention flags carry through")
     func flags() {
-        let a = MenuAction(title: "Uninstall…", systemImage: "trash", destructive: true, enabled: false) {}
+        let a = MenuAction(title: "Uninstall…", systemImage: "trash", destructive: true,
+                           enabled: false, attention: true) {}
         #expect(a.destructive == true)
         #expect(a.enabled == false)
+        #expect(a.attention == true)
     }
 
     @Test("invoke runs the action once")

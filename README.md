@@ -16,7 +16,8 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
 - `ActionRow` — icon + title action row; hover highlight; destructive = red-fill/white on hover.
 - `ExternalLink` — label + ↗, hover underline (opens outside the app).
 - `MadeWithSignoff` / `RobotGlyph` — the "Made with ♥ & 🤖" sign-off.
-- `IconButtonStyle` — square icon-control button style (brightens on hover/active/press).
+- `AttentionDot` — small reusable attention mark for icon-sized controls.
+- `IconButtonStyle` / `IconButton` — square icon-control button style; optional attention dot.
 - `GhostIconButton` — borderless "ghost" icon button (inline/secondary); optional `rowActive` hover fill.
 - `ActionPillButton` — short tinted call-to-action pill.
 - `PrimaryButton` — the accent-filled hero call-to-action (left-aligned icon+label, optional trailing
@@ -31,6 +32,8 @@ One source for **spacing** (`micro`, `space`), **radius**, **size** (`control`, 
   API — so everything that isn't a Sparkle type lives here once (Sparkle can't: it's a vendored binary).
 - `ReleaseNotesParser` / `ReleaseNotesFormat` — turn appcast release-notes markup (markdown / plain / HTML)
   into the flat `[String]` the dialog renders. Sparkle-free (the app passes the raw payload).
+- `OverflowMenu` / `MenuAction` — shared ellipsis menu. Actions can opt into generic attention state,
+  surfaced on the ellipsis button through `AttentionDot`.
 
 Grow as needed: fields/chips, loading skeletons and the settings-window shell are next tiers (see `DESIGN.md`).
 
