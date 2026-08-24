@@ -88,6 +88,35 @@ struct MenuBarBadgeTests {
         #expect(found, "no warning-coloured pixel in the badge corner - was the dot drawn at all?")
     }
 
+    /// THE defect a render caught, which every other assertion here passed straight over.
+    ///
+    /// A badged image is deliberately NOT a template, so the menu bar stops tinting it - and an SF
+    /// Symbol then draws in its default BLACK, invisible on a dark menu bar. The glyph has to be
+    /// filled explicitly. `isTemplate == false` and "a dot was painted" were both true of the
+    /// unusable version, which is why looking at the picture is not optional.
+    @Test("The glyph is drawn in the requested colour, not left to default black")
+    func glyphTakesTheRequestedColour() throws {
+        let badged = try #require(MenuBarBadge.badged(systemImage: "waveform", attention: true,
+                                                      glyphColor: .white))
+        let tiff = try #require(badged.tiffRepresentation)
+        let rep = try #require(NSBitmapImageRep(data: tiff))
+
+        // Left half only, which is glyph rather than dot.
+        var sawLightGlyph = false
+        for x in 0..<(rep.pixelsWide / 2) {
+            for y in 0..<rep.pixelsHigh {
+                guard let pixel = rep.colorAt(x: x, y: y)?.usingColorSpace(.deviceRGB),
+                      pixel.alphaComponent > 0.5 else { continue }
+                // RGB components, not whiteComponent - the latter throws on a deviceRGB colour,
+                // which crashed this test the first time it ran.
+                if pixel.redComponent > 0.8, pixel.greenComponent > 0.8, pixel.blueComponent > 0.8 {
+                    sawLightGlyph = true
+                }
+            }
+        }
+        #expect(sawLightGlyph, "the glyph is not white - on a dark menu bar it would be invisible")
+    }
+
     /// An unknown symbol name must not crash the menu bar - the app would launch with no icon and
     /// no way to reach its own menu.
     @Test("An unknown symbol returns nil rather than trapping")
