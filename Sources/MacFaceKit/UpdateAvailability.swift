@@ -35,7 +35,14 @@ public enum MenuBarBadge {
     /// - Returns: the symbol with a warning dot in its top-right corner when `attention` is true, a
     ///   plain template image when it is false, and nil when the symbol name does not resolve -
     ///   never a trap, because a menu-bar app with no icon has no way to reach its own menu.
+    /// - Parameter glyphColor: what to fill the symbol with once it is no longer a template.
+    ///   REQUIRED in substance, not a nicety: a badged image is not a template, so the menu bar
+    ///   stops tinting it and an SF Symbol falls back to BLACK - invisible on a dark menu bar. That
+    ///   version passed every assertion here (not a template, dot painted) and was unusable; only
+    ///   rendering it and looking showed it. Callers pass the colour for the current appearance,
+    ///   which is why TermTile reads `@Environment(\.colorScheme)` at the call site.
     public static func badged(systemImage: String, attention: Bool,
+                              glyphColor: NSColor = .labelColor,
                               dotSize: CGFloat = Tokens.attentionDot) -> NSImage? {
         guard let symbol = NSImage(systemSymbolName: systemImage, accessibilityDescription: nil)
         else { return nil }
@@ -52,9 +59,13 @@ public enum MenuBarBadge {
         let canvas = NSSize(width: symbol.size.width + inset, height: symbol.size.height)
         let image = NSImage(size: canvas)
         image.lockFocus()
-        symbol.draw(in: NSRect(origin: .zero, size: symbol.size),
-                    from: NSRect(origin: .zero, size: symbol.size),
+        let glyphRect = NSRect(origin: .zero, size: symbol.size)
+        symbol.draw(in: glyphRect, from: NSRect(origin: .zero, size: symbol.size),
                     operation: .sourceOver, fraction: 1)
+        // Fill the glyph explicitly. Without this it keeps the symbol's default black and vanishes
+        // into a dark menu bar - the defect a render caught and no assertion had.
+        glyphColor.setFill()
+        glyphRect.fill(using: .sourceAtop)
         NSColor(Tokens.warning).setFill()
         NSBezierPath(ovalIn: NSRect(x: canvas.width - dotSize, y: canvas.height - dotSize,
                                     width: dotSize, height: dotSize)).fill()
